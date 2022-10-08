@@ -13,9 +13,20 @@
 #include "../libft/libft.h"
 #include "ft_printf.h"
 
-void	
-
-void	check_flags(t_list *buffer, t_flags flags)
+void	check_info(t_list *buffer, t_info *info)
 {
-	
+	char	*str;
+	t_list	*temp;
+
+	temp = buffer;
+	while (temp)
+	{
+		if (((char *)temp->content)[0] == '%')
+		{
+			str = (char *)temp->content;
+			input_info(str, info);
+			substitution(temp->content);
+		}
+		temp = temp->next;
+	}
 }

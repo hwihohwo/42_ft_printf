@@ -15,8 +15,8 @@
 
 int	ft_printf(const char *str, ...)
 {
+	t_info	info;
 	t_list	*buffer;
-	t_flags	flags;
 	va_list	ap;
 
 	va_start(ap, str);
