@@ -17,6 +17,7 @@
 
 typedef struct s_info
 {
+	int	va_arg_num;
 	int	c_flag;
 	int	s_flag;
 	int	p_flag;
@@ -40,11 +41,11 @@ char	*g_specifier;
 
 g_specifier = "cspdiuxX%";
 
-t_list	*make_buffer(const char *str);
-int		count_string_length(char *str, int j);
+t_list	*make_buffer(const char *str, t_info *info);
+int		count_string_length(char *str, int j, t_info *info);
 char	*make_tmp(int count, char *str);
 int		is_specifier(char c, char *specifier);
-void	check_info(t_list *buffer, t_info *info);
+void	check_and_substitution(t_list *buffer, t_info *info, va_list ap);
 void	input_info(char *str, t_info *info);
 void	check_specifier(char c, t_info *info);
 void	initializing_info(t_info *info);

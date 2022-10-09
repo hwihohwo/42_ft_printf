@@ -33,14 +33,14 @@ int		check_flags(char c)
 
 void	input_flags(char c, t_info *info)
 {
-	if (c == '0')
+	if (info->minus_flag != 1 && c == '0')
 		info->zero_flag = 1;
 	else if (c == '-')
 	{
 		info->minus_flag = 1;
 		info->zero_flag = 0;
 	}
-	else if (c == ' ')
+	else if (info->plus_flag != 1 && c == ' ')
 		info->space_flag = 1;
 	else if (c == '+')
 	{

@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   string_substitution.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 13:59:33 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/09/29 23:23:39 by seonghwc         ###   ########.fr       */
+/*   Created: 2022/10/08 17:56:03 by marvin            #+#    #+#             */
+/*   Updated: 2022/10/08 17:56:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+char	*essential_string(t_info *info, va_list ap)
 {
-	t_info	info;
-	t_list	*buffer;
-	va_list	ap;
+	char	*ret;
 
-	va_start(ap, str);
-	info.va_arg_num = 0;
-	buffer = NULL;
-	buffer = make_buffer(str, &info);
-	if (buffer == NULL)
-		return (0);
-	check_and_substitution(buffer, &info, ap);
 
-	va_end(ap);
+}
+
+char	*make_string(t_info *info, va_list ap)
+{
+	int		length;
+	char	*ret;
+
+	ret = essential_string(info, ap);
+}
+
+void	substitution(char *str, t_info *info, va_list ap)
+{
+	char	*ret;
+	ret = make_string(info, ap);
 }

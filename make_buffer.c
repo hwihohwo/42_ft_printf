@@ -38,7 +38,7 @@ char	*make_tmp(int count, char *str)
 	return (ret);
 }
 
-int	count_string_length(char *str, int j)
+int	count_string_length(char *str, int j, t_info *info)
 {
 	if (str[j] == '%')
 	{
@@ -46,6 +46,7 @@ int	count_string_length(char *str, int j)
 		while (!is_specifier(str[j], g_specifier))
 			j++;
 		j++;
+		info->va_arg_num++;
 	}
 	else
 		while (str[j] != '%')
@@ -53,7 +54,7 @@ int	count_string_length(char *str, int j)
 	return (j);
 }
 
-t_list	*make_buffer(const char *str)
+t_list	*make_buffer(const char *str, t_info *info)
 {
 	int		i;
 	int		j;
@@ -64,7 +65,7 @@ t_list	*make_buffer(const char *str)
 	j = 0;
 	while (str[i])
 	{
-		j = count_string_length(&str[i], j);
+		j = count_string_length(&str[i], j, info);
 		tmp = make_tmp(j - i, &str[i]);
 		if (tmp == NULL)
 			return (NULL);
