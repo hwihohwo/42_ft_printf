@@ -12,5 +12,5 @@ void test(int i,...)
 
 int	main(void)
 {
-	printf("%#.5s", "hello");
+	printf("%#.5d", 10);
 }
