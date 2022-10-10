@@ -112,7 +112,7 @@ void	input_info(char *str, t_info *info)
 		i++;
 		info->precision = ft_atoi(&str[i]);
 		while (str[i] >= '0' && str[i] <= '9')
-		i++;
+			i++;
 	}
 	check_specifier(str[i], info);
 }

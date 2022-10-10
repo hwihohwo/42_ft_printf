@@ -18,13 +18,15 @@ char	*essential_string(t_info *info, va_list ap)
 	// 각 specifier별로 적용되는 flag들 처리 고민 중.
 	va_list	temp;
 	int		length;
+	char	*result;
 
-	length = 0;
 	va_copy(temp, ap);
-	if ((info->x_flag ==1 || info->low_x_flag == 1) && info->sharp_flag == 1)
-		length += 2;
-	length += info->precision;
-
+	if (info->c_flag == 1)
+		result = c_result(info, temp);
+	if (info->s_flag == 1)
+		result = s_result(info, temp);
+	if (info->p_flag == 1)
+		result = p_result(info, temp);
 }
 
 char	*make_string(t_info *info, va_list ap)
