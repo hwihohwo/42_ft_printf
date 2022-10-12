@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_flag.c                                       :+:      :+:    :+:   */
+/*   input_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 23:14:30 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/09/30 00:43:56 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:42:20 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "ft_printf.h"
 
-int		check_flags(char c)
+int	check_flags(char c)
 {
 	int	ret;
 
@@ -48,7 +48,7 @@ void	input_flags(char c, t_info *info)
 		info->space_flag = 0;
 	}
 	else if (c == '#')
-		info->sharp_flag = 1;
+		info->shap_flag = 1;
 }
 
 void	initializing_info(t_info *info)
@@ -66,7 +66,7 @@ void	initializing_info(t_info *info)
 	info->minus_flag = 0;
 	info->zero_flag = 0;
 	info->dot_flag = 0;
-	info->sharp_flag = 0;
+	info->shap_flag = 0;
 	info->space_flag = 0;
 	info->plus_flag = 0;
 }

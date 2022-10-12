@@ -3,42 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   string_substitution.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:56:03 by marvin            #+#    #+#             */
-/*   Updated: 2022/10/08 17:56:03 by marvin           ###   ########.fr       */
+/*   Updated: 2022/10/12 19:30:06 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "ft_printf.h"
 
-char	*essential_string(t_info *info, va_list ap)
+char	*make_essential_string(t_info *info, va_list *ap)
 {
-	// 각 specifier별로 적용되는 flag들 처리 고민 중.
-	va_list	temp;
 	int		length;
 	char	*result;
 
-	va_copy(temp, ap);
 	if (info->c_flag == 1)
-		result = c_result(info, temp);
-	if (info->s_flag == 1)
-		result = s_result(info, temp);
-	if (info->p_flag == 1)
-		result = p_result(info, temp);
+		result = c_result(info, ap);
+	else if (info->s_flag == 1)
+		result = s_result(info, ap);
+	else if (info->p_flag == 1)
+		result = p_result(info, ap);
+	else if (info->d_flag == 1)
+		result = d_result(info, ap);
+	else if (info->i_flag == 1)
+		result = d_result(info, ap);
+	else if (info->low_x_flag == 1)
+		result = low_x_result(info, ap);
+	else if (info->x_flag == 1)
+		result = x_result(info, ap);
+	else if (info->percent_flag == 1)
+		result = percent_result();
+	if (result == NULL)
+		return (NULL);
+	return (result);
 }
 
-char	*make_string(t_info *info, va_list ap)
+char	*make_width(t_info *info, int essential_length)
+{
+	int		i;
+	char	*ret;
+
+	i = 0;
+	ret = (char *)malloc(info->width - essential_length + 1);
+	if (ret == NULL)
+		return (NULL);
+	ret[info->width - essential_length] = NULL;
+	if (info->zero_flag == 1)
+		while (ret[i])
+			ret[i++] = '0';
+	else
+		while (ret[i])
+			ret[i++] = ' ';
+	return (ret);
+}
+
+char	*make_string(t_info *info, va_list *ap)
 {
 	int		length;
+	char	*ret1;
+	char	*ret2;
 	char	*ret;
 
-	ret = essential_string(info, ap);
-}
-
-void	substitution(char *str, t_info *info, va_list ap)
-{
-	char	*ret;
-	ret = make_string(info, ap);
+	ret1 = make_essential_string(info, ap);
+	if (ret1 == NULL)
+		return (NULL);
+	if (info->width > ft_strlen(ret1))
+	{
+		ret2 = make_width(info, ft_strlen(ret1));
+		if (ret2 == NULL)
+			return (NULL);
+	}
+	if (info->minus_flag == 1)
+		ret = ft_strjoin(ret1, ret2);
+	else
+		ret = ft_strjoin(ret2, ret1);
+	free_all(ret1, ret2);
+	return (ret);
 }
