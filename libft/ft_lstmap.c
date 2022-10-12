@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 13:59:33 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:56:02 by seonghwc         ###   ########.fr       */
+/*   Created: 2022/07/12 15:49:41 by seonghwc          #+#    #+#             */
+/*   Updated: 2022/07/12 20:10:57 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_info	info;
-	t_list	*buffer;
-	va_list	ap;
-	int		count;
+	t_list	*temp;
+	t_list	*ret;
 
-	va_start(ap, str);
-	info.va_arg_num = 0;
-	buffer = NULL;
-	buffer = make_buffer(str, &info);
-	if (buffer == NULL)
-		return (0);
-	check_and_substitution(buffer, &info, &ap);
-	count = print_all(buffer);
-	lst_clear(buffer, free);
-	va_end(ap);
-	return (count);
+	if (lst == NULL)
+		return (NULL);
+	ret = NULL;
+	while (lst)
+	{
+		temp = ft_lstnew(f(lst->content));
+		if (temp == NULL)
+		{
+			ft_lstclear(&ret, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&ret, temp);
+		lst = lst->next;
+		temp = temp->next;
+	}
+	return (ret);
 }

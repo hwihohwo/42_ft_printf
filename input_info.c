@@ -6,11 +6,11 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 23:14:30 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 16:42:20 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/12 19:56:01 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "./libft/libft.h"
 #include "ft_printf.h"
 
 int	check_flags(char c)

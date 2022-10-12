@@ -6,11 +6,11 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 19:22:00 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/09/30 00:44:17 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/12 19:56:52 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "./libft/libft.h"
 #include "ft_printf.h"
 
 int	is_specifier(char c, char *specifier)
@@ -43,7 +43,7 @@ int	count_string_length(char *str, int j, t_info *info)
 	if (str[j] == '%')
 	{
 		j++;
-		while (!is_specifier(str[j], g_specifier))
+		while (!is_specifier(str[j], "cspdiuxX%"))
 			j++;
 		j++;
 		info->va_arg_num++;

@@ -6,11 +6,11 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 23:14:30 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:27:53 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/12 19:56:11 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "./libft/libft.h"
 #include "ft_printf.h"
 
 void	check_and_substitution(t_list *buffer, t_info *info, va_list *ap)

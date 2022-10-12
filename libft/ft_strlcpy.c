@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 13:59:33 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:56:02 by seonghwc         ###   ########.fr       */
+/*   Created: 2022/07/07 19:37:05 by seonghwc          #+#    #+#             */
+/*   Updated: 2022/07/12 20:02:16 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+static size_t	length(const char *src)
 {
-	t_info	info;
-	t_list	*buffer;
-	va_list	ap;
-	int		count;
+	int	i;
 
-	va_start(ap, str);
-	info.va_arg_num = 0;
-	buffer = NULL;
-	buffer = make_buffer(str, &info);
-	if (buffer == NULL)
-		return (0);
-	check_and_substitution(buffer, &info, &ap);
-	count = print_all(buffer);
-	lst_clear(buffer, free);
-	va_end(ap);
-	return (count);
+	i = 0;
+	while (src[i])
+		i++;
+	return (i);
+}
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	if (size == 0)
+		return (length(src));
+	while (src[i] != '\0' && i < size - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (length(src));
 }

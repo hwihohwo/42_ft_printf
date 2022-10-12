@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 13:59:33 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:56:02 by seonghwc         ###   ########.fr       */
+/*   Created: 2022/07/12 15:51:07 by seonghwc          #+#    #+#             */
+/*   Updated: 2022/07/13 17:49:46 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_info	info;
-	t_list	*buffer;
-	va_list	ap;
-	int		count;
+	t_list	*temp;
 
-	va_start(ap, str);
-	info.va_arg_num = 0;
-	buffer = NULL;
-	buffer = make_buffer(str, &info);
-	if (buffer == NULL)
-		return (0);
-	check_and_substitution(buffer, &info, &ap);
-	count = print_all(buffer);
-	lst_clear(buffer, free);
-	va_end(ap);
-	return (count);
+	if (lst == NULL)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		new->next = NULL;
+	}
+	else
+	{
+		temp = *lst;
+		*lst = new;
+		new->next = temp;
+	}
 }

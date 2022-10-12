@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 13:59:33 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:56:02 by seonghwc         ###   ########.fr       */
+/*   Created: 2022/07/12 15:51:57 by seonghwc          #+#    #+#             */
+/*   Updated: 2022/07/12 19:33:49 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+t_list	*ft_lstnew(void *content)
 {
-	t_info	info;
-	t_list	*buffer;
-	va_list	ap;
-	int		count;
+	t_list	*node;
 
-	va_start(ap, str);
-	info.va_arg_num = 0;
-	buffer = NULL;
-	buffer = make_buffer(str, &info);
-	if (buffer == NULL)
-		return (0);
-	check_and_substitution(buffer, &info, &ap);
-	count = print_all(buffer);
-	lst_clear(buffer, free);
-	va_end(ap);
-	return (count);
+	node = (t_list *)malloc(sizeof(t_list));
+	if (node == NULL)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }

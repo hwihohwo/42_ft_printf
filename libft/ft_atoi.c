@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 13:59:33 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:56:02 by seonghwc         ###   ########.fr       */
+/*   Created: 2022/07/12 15:49:53 by seonghwc          #+#    #+#             */
+/*   Updated: 2022/07/13 17:58:46 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+int	ft_atoi(const char *str)
 {
-	t_info	info;
-	t_list	*buffer;
-	va_list	ap;
-	int		count;
+	int		i;
+	long	ret;
+	int		sign;
 
-	va_start(ap, str);
-	info.va_arg_num = 0;
-	buffer = NULL;
-	buffer = make_buffer(str, &info);
-	if (buffer == NULL)
-		return (0);
-	check_and_substitution(buffer, &info, &ap);
-	count = print_all(buffer);
-	lst_clear(buffer, free);
-	va_end(ap);
-	return (count);
+	ret = 0;
+	sign = 1;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+		ret = ret * 10 + (str[i++] - '0');
+	if (ret < 0)
+		return ((sign + 1) / -2);
+	return (sign * ret);
 }

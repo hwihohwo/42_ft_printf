@@ -6,11 +6,11 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:50:47 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:10:31 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/12 19:56:10 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "./libft/libft.h"
 #include "ft_printf.h"
 
 int	calc_length(int base, long num)

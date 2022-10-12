@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 13:59:33 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:56:02 by seonghwc         ###   ########.fr       */
+/*   Created: 2022/07/07 18:46:29 by seonghwc          #+#    #+#             */
+/*   Updated: 2022/07/13 15:27:29 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	t_info	info;
-	t_list	*buffer;
-	va_list	ap;
-	int		count;
+	unsigned char	*arr1;
+	unsigned char	*arr2;
 
-	va_start(ap, str);
-	info.va_arg_num = 0;
-	buffer = NULL;
-	buffer = make_buffer(str, &info);
-	if (buffer == NULL)
-		return (0);
-	check_and_substitution(buffer, &info, &ap);
-	count = print_all(buffer);
-	lst_clear(buffer, free);
-	va_end(ap);
-	return (count);
+	arr1 = (unsigned char *)dst;
+	arr2 = (unsigned char *)src;
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	if (dst > src && dst < src + n)
+	{
+		while (n)
+		{
+			n--;
+			arr1[n] = arr2[n];
+		}
+		return (dst);
+	}
+	return (ft_memcpy(dst, src, n));
 }
