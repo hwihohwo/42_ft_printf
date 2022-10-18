@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 23:14:30 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:56:11 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:37:37 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,17 @@ int	print_all(t_list *buffer)
 {
 	int		i;
 	int		count;
-	t_list	*temp;
 
 	count = 0;
-	while (temp)
+	while (buffer)
 	{
 		i = 0;
-		while (((char *)temp->content)[i])
+		while (((char *)buffer->content)[i])
 		{
-			write(1, &temp->content[i++], 1);
+			write(1, &buffer->content[i++], 1);
 			count++;
 		}
-		temp = temp->next;
+		buffer = buffer->next;
 	}
 	return (count);
 }

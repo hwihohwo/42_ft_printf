@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 19:22:00 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:56:52 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:56:16 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@ int	is_specifier(char c, char *specifier)
 {
 	int	i;
 
+	i = 0;
 	while (specifier[i])
+	{
 		if (c == specifier[i])
 			return (1);
+		i++;
+	}
 	return (0);
 }
 
-char	*make_tmp(int count, char *str)
+char	*make_tmp(int count, const char *str)
 {
 	int		i;
 	char	*ret;
@@ -33,28 +37,30 @@ char	*make_tmp(int count, char *str)
 	if (ret == NULL)
 		return (NULL);
 	while (i < count)
-		ret[i] = str[i++];
-	ret[i] = NULL;
+	{
+		ret[i] = str[i];
+		i++;
+	}
+	ret[i] = 0;
 	return (ret);
 }
 
-int	count_string_length(char *str, int j, t_info *info)
+int	count_string_length(const char *str, int j)
 {
 	if (str[j] == '%')
 	{
 		j++;
-		while (!is_specifier(str[j], "cspdiuxX%"))
+		while (!is_specifier(str[j], "cspdiuxX%") && str[j])
 			j++;
 		j++;
-		info->va_arg_num++;
 	}
 	else
-		while (str[j] != '%')
+		while (str[j] != '%' && str[j])
 			j++;
 	return (j);
 }
 
-t_list	*make_buffer(const char *str, t_info *info)
+t_list	*make_buffer(const char *str)
 {
 	int		i;
 	int		j;
@@ -63,14 +69,15 @@ t_list	*make_buffer(const char *str, t_info *info)
 
 	i = 0;
 	j = 0;
+	buffer = NULL;
 	while (str[i])
 	{
-		j = count_string_length(&str[i], j, info);
+		j = count_string_length(str, j);
 		tmp = make_tmp(j - i, &str[i]);
 		if (tmp == NULL)
 			return (NULL);
 		i = j;
-		lst_addback(&buffer, lst_new(tmp));
+		ft_lstadd_back(&buffer, ft_lstnew(tmp));
 	}
 	return (buffer);
 }

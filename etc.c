@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:50:47 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:56:10 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:48:03 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*write_num(int base, long num, int precision)
 	ret = (char *)malloc(length + 1);
 	if (ret == NULL)
 		return (NULL);
-	ret[length] = NULL;
+	ret[length] = 0;
 	while (--length >= 0)
 	{
 		ret[length] = base_list[num % base];
@@ -67,7 +67,7 @@ char	*write_num_upper(int base, long num, int precision)
 	ret = (char *)malloc(length + 1);
 	if (ret == NULL)
 		return (NULL);
-	ret[length] = NULL;
+	ret[length] = 0;
 	while (--length >= 0)
 	{
 		ret[length] = base_list[num % base];
@@ -84,4 +84,14 @@ void	free_all(char *arr1, char *arr2)
 {
 	free(arr1);
 	free(arr2);
+}
+
+void	put_d_front(int num, char *ret1, t_info *info)
+{
+	if (num < 0)
+		ret1[0] = '-';
+	else if (num >= 0 && info->space_flag)
+		ret1[0] = ' ';
+	else if (num >= 0 && info->plus_flag)
+		ret1[0] = '+';
 }
