@@ -6,14 +6,13 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:11:18 by marvin            #+#    #+#             */
-/*   Updated: 2022/10/18 21:29:31 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/20 23:10:26 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "ft_printf.h"
 
-char	*c_result(va_list *ap)
+char	*c_result(va_list *ap, t_info *info)
 {
 	char	*ret;
 
@@ -21,7 +20,12 @@ char	*c_result(va_list *ap)
 	if (ret == 0)
 		return (0);
 	ret[0] = va_arg(*ap, int);
-	ret[1] = 0;
+	if (ret[0] == '\0')
+	{
+		info->length++;
+		info->c_null_flag = 1;
+	}
+	ret[1] = '\0';
 	return (ret);
 }
 
@@ -41,8 +45,11 @@ char	*s_result(va_list *ap, t_info *info)
 		ret = (char *)malloc(ft_strlen(str_temp) + 1);
 	if (ret == 0)
 		return (0);
-	while (str_temp[i] && i < info->precision)
+	while (str_temp[i])
 	{
+		if (info->precision > 0)
+			if (i >= info->precision)
+				break ;
 		ret[i] = str_temp[i];
 		i++;
 	}
@@ -52,10 +59,10 @@ char	*s_result(va_list *ap, t_info *info)
 
 char	*p_result(va_list *ap)
 {
-	int			length;
-	long long	addr;
-	char		*base_list;
-	char		*ret;
+	int				length;
+	unsigned long	addr;
+	char			*base_list;
+	char			*ret;
 
 	addr = va_arg(*ap, unsigned long);
 	base_list = "0123456789abcdef";
@@ -69,7 +76,7 @@ char	*p_result(va_list *ap)
 	ret[1] = 'x';
 	while (--length > 1)
 	{
-		ret[length] = base_list[addr / 16];
+		ret[length] = base_list[addr % 16];
 		addr /= 16;
 	}
 	return (ret);

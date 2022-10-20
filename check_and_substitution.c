@@ -6,19 +6,20 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 23:14:30 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/18 21:37:37 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/20 23:14:41 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "ft_printf.h"
 
-void	check_and_substitution(t_list *buffer, t_info *info, va_list *ap)
+int	check_and_substitution(t_list *buffer, t_info *info, va_list *ap)
 {
+	int		count;
 	char	*str;
 	t_list	*temp;
 
 	temp = buffer;
+	count = 0;
 	while (temp)
 	{
 		if (((char *)temp->content)[0] == '%')
@@ -28,27 +29,35 @@ void	check_and_substitution(t_list *buffer, t_info *info, va_list *ap)
 			free(temp->content);
 			temp->content = make_string(info, ap);
 			if (temp->content == NULL)
-				return ;
+				return (-1);
+			info->length += ft_strlen((char *)temp->content);
 		}
+		else
+			info->length = ft_strlen((char *)temp->content);
+		count += print((char *)temp->content, info);
 		temp = temp->next;
 	}
+	return (count);
 }
 
-int	print_all(t_list *buffer)
+int	print(char *str, t_info *info)
 {
-	int		i;
-	int		count;
+	int	i;
+	int	count;
 
+	i = 0;
 	count = 0;
-	while (buffer)
+	while (info->length)
 	{
-		i = 0;
-		while (((char *)buffer->content)[i])
+		if (info->c_null_flag == 1)
 		{
-			write(1, &buffer->content[i++], 1);
-			count++;
+			write(1, "\0", 1);
+			info->c_null_flag = 0;
 		}
-		buffer = buffer->next;
+		else
+			write(1, &str[i++], 1);
+		count++;
+		info->length--;
 	}
 	return (count);
 }

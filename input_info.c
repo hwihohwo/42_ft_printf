@@ -6,11 +6,10 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 23:14:30 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 19:56:01 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/20 23:10:08 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "ft_printf.h"
 
 int	check_flags(char c)
@@ -63,12 +62,15 @@ void	initializing_info(t_info *info)
 	info->low_x_flag = 0;
 	info->percent_flag = 0;
 	info->width = 0;
+	info->precision = 0;
 	info->minus_flag = 0;
 	info->zero_flag = 0;
 	info->dot_flag = 0;
 	info->shap_flag = 0;
 	info->space_flag = 0;
 	info->plus_flag = 0;
+	info->length = 0;
+	info->c_null_flag = 0;
 }
 
 void	check_specifier(char c, t_info *info)

@@ -6,11 +6,10 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:56:52 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/18 17:05:14 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/20 15:46:51 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "ft_printf.h"
 
 char	*low_x_result(t_info *info, va_list *ap)

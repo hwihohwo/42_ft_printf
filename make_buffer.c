@@ -6,11 +6,10 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 19:22:00 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/18 20:56:16 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/20 15:47:47 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "ft_printf.h"
 
 int	is_specifier(char c, char *specifier)

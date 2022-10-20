@@ -6,11 +6,10 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:56:03 by marvin            #+#    #+#             */
-/*   Updated: 2022/10/18 21:58:12 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/20 22:39:07 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "ft_printf.h"
 
 char	*make_essential_string(t_info *info, va_list *ap)
@@ -18,7 +17,7 @@ char	*make_essential_string(t_info *info, va_list *ap)
 	char	*result;
 
 	if (info->c_flag == 1)
-		result = c_result(ap);
+		result = c_result(ap, info);
 	else if (info->s_flag == 1)
 		result = s_result(ap, info);
 	else if (info->p_flag == 1)
@@ -53,10 +52,10 @@ char	*make_width(t_info *info, int essential_length)
 			return (NULL);
 		ret[info->width - essential_length] = 0;
 		if (info->zero_flag == 1)
-			while (ret[i])
+			while (info->width - essential_length - i)
 				ret[i++] = '0';
 		else
-			while (ret[i])
+			while (info->width - essential_length - i)
 				ret[i++] = ' ';
 	}
 	else
@@ -78,7 +77,10 @@ char	*make_string(t_info *info, va_list *ap)
 	ret1 = make_essential_string(info, ap);
 	if (ret1 == NULL)
 		return (NULL);
-	ret2 = make_width(info, ft_strlen(ret1));
+	if (info->c_flag == 1 && ret[0] == '\0')
+		ret2 = make_width(info, 1);
+	else
+		ret2 = make_width(info, ft_strlen(ret1));
 	if (ret2 == NULL)
 		return (NULL);
 	if (info->minus_flag == 1)

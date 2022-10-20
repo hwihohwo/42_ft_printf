@@ -6,14 +6,13 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:50:47 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/18 21:48:03 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/20 21:20:55 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
 #include "ft_printf.h"
 
-int	calc_length(int base, long num)
+int	calc_length(int base, unsigned long num)
 {
 	int	length;
 

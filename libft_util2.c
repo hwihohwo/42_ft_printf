@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   libft_util2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 15:58:33 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/12 14:10:27 by seonghwc         ###   ########.fr       */
+/*   Created: 2022/10/20 15:43:14 by seonghwc          #+#    #+#             */
+/*   Updated: 2022/10/20 15:48:41 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	total_length(char const *s1, char const *s2)
 {
@@ -52,4 +52,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		ret[i++] = s2[j++];
 	ret[i] = '\0';
 	return (ret);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
