@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:11:18 by marvin            #+#    #+#             */
-/*   Updated: 2022/10/20 23:10:26 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/21 15:12:25 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*s_result(va_list *ap, t_info *info)
 	str_temp = va_arg(*ap, char *);
 	if (str_temp == 0)
 		str_temp = "(null)";
-	if (info->precision < (int)ft_strlen(str_temp))
+	if (info->dot_flag == 1)
 		ret = (char *)malloc(info->precision + 1);
 	else
 		ret = (char *)malloc(ft_strlen(str_temp) + 1);
@@ -47,7 +47,7 @@ char	*s_result(va_list *ap, t_info *info)
 		return (0);
 	while (str_temp[i])
 	{
-		if (info->precision > 0)
+		if (info->dot_flag == 1)
 			if (i >= info->precision)
 				break ;
 		ret[i] = str_temp[i];

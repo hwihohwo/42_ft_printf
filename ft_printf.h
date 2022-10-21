@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:12:23 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/20 23:09:47 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/21 14:41:27 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *str);
+void	check_zero_flag(char *ret);
 #endif

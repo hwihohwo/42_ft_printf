@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 19:50:47 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/20 21:20:55 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/21 15:44:23 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*write_num(int base, long num, int precision)
 			break ;
 	}
 	while (--length >= 0)
-		ret[length] = 0;
+		ret[length] = '0';
 	return (ret);
 }
 
@@ -75,7 +75,7 @@ char	*write_num_upper(int base, long num, int precision)
 			break ;
 	}
 	while (--length >= 0)
-		ret[length] = 0;
+		ret[length] = '0';
 	return (ret);
 }
 

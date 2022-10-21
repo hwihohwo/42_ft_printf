@@ -10,7 +10,8 @@ SRCS= ft_printf.c \
 		change_to_result2.c \
 		etc.c \
 		libft_util.c \
-		libft_util2.c
+		libft_util2.c \
+		etc2.c
 BNS_SRCS= ft_printf.c
 OBJS=$(SRCS:%.c=%.o)
 BNS_OBJS=$(BNS_SRCS:%.c=%.o)

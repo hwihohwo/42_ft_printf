@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:56:03 by marvin            #+#    #+#             */
-/*   Updated: 2022/10/20 22:39:07 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/21 14:44:35 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,14 @@ char	*make_string(t_info *info, va_list *ap)
 	char	*ret1;
 	char	*ret2;
 	char	*ret;
+	int		i;
+	char	temp;
 
+	i = 0;
 	ret1 = make_essential_string(info, ap);
 	if (ret1 == NULL)
 		return (NULL);
-	if (info->c_flag == 1 && ret[0] == '\0')
+	if (info->c_null_flag == 1)
 		ret2 = make_width(info, 1);
 	else
 		ret2 = make_width(info, ft_strlen(ret1));
@@ -87,6 +90,8 @@ char	*make_string(t_info *info, va_list *ap)
 		ret = ft_strjoin(ret1, ret2);
 	else
 		ret = ft_strjoin(ret2, ret1);
+	if (info->zero_flag == 1 && (info->d_flag == 1 || info->i_flag == 1))
+		check_zero_flag(ret);
 	free_all(ret1, ret2);
 	return (ret);
 }

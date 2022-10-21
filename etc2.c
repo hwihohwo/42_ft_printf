@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   etc2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 20:30:36 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/20 22:42:50 by seonghwc         ###   ########.fr       */
+/*   Created: 2022/10/21 14:38:45 by seonghwc          #+#    #+#             */
+/*   Updated: 2022/10/21 14:42:30 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdarg.h>
 #include "ft_printf.h"
-#include <limits.h>
 
-int	main(void)
+void	check_zero_flag(char *ret)
 {
-	int	a;
-	int	b;
+	int		i;
+	char	temp;
 
-	a = printf("%-1c%-2c%-3c\n", '0', 0, '1');
-	b = ft_printf("%-1c%-2c%-3c\n", '0', 0, '1');
-	printf("%d %d\n", a, b);
-	return (0);
+	i = 0;
+	while (ret[i])
+	{
+		if (ret[i] == '-')
+		{
+			temp = ret[i];
+			ret[i] = ret[0];
+			ret[0] = temp;
+		}
+		i++;
+	}
 }
