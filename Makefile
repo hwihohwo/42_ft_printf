@@ -4,7 +4,7 @@ CFLAGS= -Wall -Wextra -Werror
 SRCS= ft_printf.c \
 		make_buffer.c \
 		input_info.c \
-		check_and_substitution.c \
+		substitute_and_print.c \
 		string_substitution.c \
 		change_to_result.c \
 		change_to_result2.c \

@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:59:33 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/20 18:39:11 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/28 04:20:03 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_printf(const char *str, ...)
 	buffer = make_buffer(str);
 	if (buffer == NULL)
 		return (0);
-	count = check_and_substitution(buffer, &info, &ap);
+	count = substitute_and_print(buffer, &info, &ap);
 	if (count == -1)
 		return (0);
 	ft_lstclear(&buffer, free);

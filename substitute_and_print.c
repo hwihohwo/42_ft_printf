@@ -6,13 +6,13 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 23:14:30 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/21 14:12:37 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/28 04:20:03 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	check_and_substitution(t_list *buffer, t_info *info, va_list *ap)
+int	substitute_and_print(t_list *buffer, t_info *info, va_list *ap)
 {
 	int		count;
 	char	*str;

@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:12:23 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/21 14:41:27 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/10/28 04:20:03 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_list	*make_buffer(const char *str);
 int		count_string_length(const char *str, int j);
 char	*make_tmp(int count, const char *str);
 int		is_specifier(char c, char *specifier);
-int		check_and_substitution(t_list *buffer, t_info *info, va_list *ap);
+int		substitute_and_print(t_list *buffer, t_info *info, va_list *ap);
 int		print(char *str, t_info *info);
 void	input_info(char *str, t_info *info);
 void	check_specifier(char c, t_info *info);
