@@ -12,13 +12,21 @@ SRCS= ft_printf.c \
 		libft_util.c \
 		libft_util2.c \
 		etc2.c
-BNS_SRCS= ft_printf.c
-OBJS=$(SRCS:%.c=%.o)
-BNS_OBJS=$(BNS_SRCS:%.c=%.o)
+BNS_SRCS= ft_printf_bonus.c \
+		make_buffer_bonus.c \
+		input_info_bonus.c \
+		substitute_and_print_bonus.c \
+		string_substitution_bonus.c \
+		change_to_result_bonus.c \
+		change_to_result2_bonus.c \
+		etc_bonus.c \
+		libft_util_bonus.c \
+		libft_util2_bonus.c \
+		etc2_bonus.c
 ifdef FLAG_BONUS
-    TOTAL_OBJS = $(OBJS) $(BNS_OBJS)
+    OBJS = $(BNS_SRCS:%.c=%.o)
 else
-    TOTAL_OBJS = $(OBJS)
+    OBJS = $(SRCS:%.c=%.o)
 endif
 
 all : $(NAME)
@@ -28,9 +36,9 @@ $(NAME) : $(OBJS)
 %.o : %.c
 	$(CC) $(FLAGS) -c $< -o $@ -I .
 bonus   :  
-	make FLAG_BONUS=1 all
+	make fclean FLAG_BONUS=1 all
 clean   :
-	rm -f $(OBJS) $(BNS_OBJF)
+	rm -f *.o
 fclean  :   clean
 	rm -f $(NAME)
 re : fclean all
