@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_substitution.c                              :+:      :+:    :+:   */
+/*   string_substitution_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:56:03 by marvin            #+#    #+#             */
-/*   Updated: 2022/10/21 14:44:35 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/17 21:53:47 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 char	*make_essential_string(t_info *info, va_list *ap)
 {
@@ -74,7 +74,6 @@ char	*make_string(t_info *info, va_list *ap)
 	char	*ret2;
 	char	*ret;
 	int		i;
-	char	temp;
 
 	i = 0;
 	ret1 = make_essential_string(info, ap);
