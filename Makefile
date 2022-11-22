@@ -36,7 +36,7 @@ $(NAME) : $(OBJS)
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@ -I .
 bonus   :  
-	make fclean FLAG_BONUS=1 all
+	make FLAG_BONUS=1 all
 clean   :
 	rm -f ./srcs/*.o ./bns_srcs/*.o
 fclean  :   clean
