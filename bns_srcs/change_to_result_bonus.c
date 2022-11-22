@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:11:18 by marvin            #+#    #+#             */
-/*   Updated: 2022/11/17 18:46:19 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/21 20:53:20 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ char	*d_result(t_info *info, va_list *ap)
 	num = va_arg(*ap, int);
 	if (num < 0 || info->plus_flag || info->space_flag)
 		length++;
+	if (info->dot_flag == 1 && info->precision == 0 && num == 0)
+		info->d_zero_flag = 1;
 	ret1 = (char *)malloc(length + 1);
 	if (ret1 == NULL)
 		return (NULL);
@@ -119,13 +121,13 @@ char	*u_result(t_info *info, va_list *ap)
 	num = va_arg(*ap, unsigned int);
 	if (num < 0 || info->plus_flag || info->space_flag)
 		length++;
+	if (info->dot_flag == 1 && info->precision == 0 && num == 0)
+		info->d_zero_flag = 1;
 	ret1 = (char *)malloc(length + 1);
 	if (ret1 == 0)
 		return (0);
 	ret1[length] = 0;
-	if (num < 0)
-		ret1[0] = '-';
-	else if (num >= 0 && info->space_flag)
+	if (num >= 0 && info->space_flag)
 		ret1[0] = ' ';
 	else if (num >= 0 && info->plus_flag)
 		ret1[0] = '+';

@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 23:14:30 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/10/20 23:10:08 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/18 04:38:35 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	initializing_info(t_info *info)
 	info->plus_flag = 0;
 	info->length = 0;
 	info->c_null_flag = 0;
+	info->d_zero_flag = 0;
 }
 
 void	check_specifier(char c, t_info *info)

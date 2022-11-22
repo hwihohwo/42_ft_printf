@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:56:52 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/11/17 18:46:27 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/22 22:12:05 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	*low_x_result(t_info *info, va_list *ap)
 	num = va_arg(*ap, int);
 	if (info->shap_flag == 1 && num != 0)
 		length += 2;
+	if (info->dot_flag == 1 && info->precision == 0 && num == 0)
+		info->d_zero_flag = 1;
 	ret1 = (char *)malloc(length + 1);
 	if (ret1 == NULL)
 		return (NULL);
@@ -51,6 +53,8 @@ char	*x_result(t_info *info, va_list *ap)
 	num = va_arg(*ap, int);
 	if (info->shap_flag == 1 && num != 0)
 		length += 2;
+	if (info->dot_flag == 1 && info->precision == 0 && num == 0)
+		info->d_zero_flag = 1;
 	ret1 = (char *)malloc(length + 1);
 	if (ret1 == NULL)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 23:14:30 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/11/17 18:47:17 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/22 22:34:41 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,19 @@ int	print(char *str, t_info *info)
 	{
 		if (info->c_null_flag == 1)
 		{
-			write(1, "\0", 1);
-			info->c_null_flag = 0;
+			check_c_null_flag(info, str, i);
+			i--;
+		}
+		else if (info->d_zero_flag == 1 && str[i] == '0')
+		{
+			info->d_zero_flag = 0;
+			count--;
 		}
 		else
-			write(1, &str[i++], 1);
+			write(1, &str[i], 1);
 		count++;
 		info->length--;
+		i++;
 	}
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:12:23 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/11/17 18:55:56 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/22 22:35:07 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_info
 	int	plus_flag;
 	int	length;
 	int	c_null_flag;
+	int	d_zero_flag;
 }	t_info;
 
 int		ft_printf(const char *str, ...);
@@ -82,4 +83,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *str);
 void	check_zero_flag(char *ret);
+void	check_c_null_flag(t_info *info, char *str, int i);
+char	*make_width_sub(t_info *info, int essential_length);
 #endif

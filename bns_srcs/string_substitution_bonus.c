@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:56:03 by marvin            #+#    #+#             */
-/*   Updated: 2022/11/17 21:53:47 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/22 22:43:12 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,11 @@ char	*make_width(t_info *info, int essential_length)
 	char	*ret;
 
 	i = 0;
-	if (info->width > essential_length)
+	if (info->width >= essential_length)
 	{
-		ret = (char *)malloc(info->width - essential_length + 1);
+		ret = make_width_sub(info, essential_length);
 		if (ret == NULL)
 			return (NULL);
-		ret[info->width - essential_length] = 0;
-		if (info->zero_flag == 1)
-			while (info->width - essential_length - i)
-				ret[i++] = '0';
-		else
-			while (info->width - essential_length - i)
-				ret[i++] = ' ';
 	}
 	else
 	{
@@ -89,7 +82,8 @@ char	*make_string(t_info *info, va_list *ap)
 		ret = ft_strjoin(ret1, ret2);
 	else
 		ret = ft_strjoin(ret2, ret1);
-	if (info->zero_flag == 1 && (info->d_flag == 1 || info->i_flag == 1))
+	if (info->zero_flag == 1 && (info->d_flag == 1 || \
+	info->i_flag == 1 || info->low_x_flag == 1 || info->x_flag == 1))
 		check_zero_flag(ret);
 	free_all(ret1, ret2);
 	return (ret);
