@@ -1,5 +1,5 @@
 NAME=libftprintf.a
-CC=gcc
+CC=cc
 CFLAGS= -Wall -Wextra -Werror
 SRCS= ./srcs/ft_printf.c \
 		./srcs/make_buffer.c \

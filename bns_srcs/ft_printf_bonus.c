@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:59:33 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/11/17 19:17:59 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/23 18:43:08 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	ft_printf(const char *str, ...)
 	if (buffer == NULL)
 	{
 		ft_lstclear(&buffer, free);
-		return (0);
+		return (-1);
 	}
 	count = substitute_and_print(buffer, &info, &ap);
 	if (count == -1)
 	{
 		ft_lstclear(&buffer, free);
-		return (0);
+		return (-1);
 	}
 	ft_lstclear(&buffer, free);
 	va_end(ap);

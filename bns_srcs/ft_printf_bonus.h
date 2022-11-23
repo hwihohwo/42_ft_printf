@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:12:23 by seonghwc          #+#    #+#             */
-/*   Updated: 2022/11/22 22:35:14 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:44:25 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*make_width(t_info *info, int essential_length);
 char	*make_essential_string(t_info *info, va_list *ap);
 char	*c_result(va_list *ap, t_info *info);
 char	*s_result(va_list *ap, t_info *info);
-char	*p_result(va_list *ap);
+char	*p_result(va_list *ap, t_info *info);
 char	*d_result(t_info *info, va_list *ap);
 char	*u_result(t_info *info, va_list *ap);
 char	*low_x_result(t_info *info, va_list *ap);

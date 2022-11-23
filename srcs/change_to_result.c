@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 18:11:18 by marvin            #+#    #+#             */
-/*   Updated: 2022/11/21 20:49:41 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:43:50 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*s_result(va_list *ap, t_info *info)
 	return (ret);
 }
 
-char	*p_result(va_list *ap)
+char	*p_result(va_list *ap, t_info *info)
 {
 	int				length;
 	unsigned long	addr;
@@ -67,6 +67,8 @@ char	*p_result(va_list *ap)
 	addr = va_arg(*ap, unsigned long);
 	base_list = "0123456789abcdef";
 	length = calc_length(16, addr);
+	if (addr == 0 && info->dot_flag == 1)
+		length = 0;
 	length += 2;
 	ret = (char *)malloc(length + 1);
 	if (ret == 0)

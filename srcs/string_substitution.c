@@ -6,7 +6,7 @@
 /*   By: seonghwc <seonghwc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 17:56:03 by marvin            #+#    #+#             */
-/*   Updated: 2022/11/22 23:06:32 by seonghwc         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:45:03 by seonghwc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*make_essential_string(t_info *info, va_list *ap)
 	else if (info->s_flag == 1)
 		result = s_result(ap, info);
 	else if (info->p_flag == 1)
-		result = p_result(ap);
+		result = p_result(ap, info);
 	else if (info->d_flag == 1)
 		result = d_result(info, ap);
 	else if (info->i_flag == 1)
